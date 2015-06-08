@@ -124,21 +124,25 @@ fi
 # the email subject to the local logs.
 if [ "$message" -ne 0 ]; then
 	echo "
-	<h1>$emailSubject</h1>
-	`date`
-	<p>
-		zpool list
-		<pre>
+To: $toEmail
+Subject: $emailSubject
+Content-Type: text/html
+
+<h2>$emailSubject</h2>
+`date`
+<p>
+	zpool list
+	<pre>
 `/sbin/zpool list`
-		</pre>
-	</p>
-	<p>
-		zpool status
-		<pre>
+	</pre>
+</p>
+<p>
+	zpool status
+	<pre>
 `/sbin/zpool status`
-		</pre>
-	</p>
-	" | mail -s "$emailSubject" $toEmail
+	</pre>
+</p>
+" | sendmail -t
 	logger $emailSubject
 fi
 
