@@ -123,7 +123,22 @@ fi
 # capacities including a helpful subject line to root. Also use logger to write
 # the email subject to the local logs.
 if [ "$message" -ne 0 ]; then
-	echo -e "$emailSubject \n\n\n `/sbin/zpool list` \n\n\n `/sbin/zpool status`" | mail -s "$emailSubject" $toEmail
+	echo "
+	<h1>$emailSubject</h1>
+	`date`
+	<p>
+		zpool list
+		<pre>
+`/sbin/zpool list`
+		</pre>
+	</p>
+	<p>
+		zpool status
+		<pre>
+`/sbin/zpool status`
+		</pre>
+	</p>
+	" | mail -s "$emailSubject" $toEmail
 	logger $emailSubject
 fi
 
