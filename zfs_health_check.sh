@@ -7,7 +7,10 @@
 # be required to run the `zpool` commands
 
 # If any problems are detected, an email will be sent to the following addresses:
-toEmail=user1@domain.com user2@domain.com
+toEmail="user1@domain.com user2@domain.com"
+
+# If true, email will be sent even when there are no problems.
+successMsg=false
 
 # Keep track of problems
 message=0
