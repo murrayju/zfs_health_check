@@ -113,7 +113,7 @@ fi
 
 # Success message (if configured)
 if [ ${message} -eq 0 ]; then
-	if [ $successMsg ]; then
+	if [ "$successMsg" == true ]; then
 		emailSubject="`hostname` - ZFS pool - Healthy"
 		message=1
 	fi
